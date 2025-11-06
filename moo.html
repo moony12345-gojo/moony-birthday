@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Prupulisat 🌹</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        background: linear-gradient(
+          135deg,
+          #ffeef8 0%,
+          #ffe0f0 50%,
+          #ffd6eb 100%
+        );
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .petal {
+        position: fixed;
+        top: -10%;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(
+          ellipse at center,
+          #ff6b9d 0%,
+          #c94277 100%
+        );
+        border-radius: 50% 0 50% 0;
+        opacity: 0.8;
+        animation: fall linear infinite;
+        z-index: 1;
+      }
+
+      @keyframes fall {
+        to {
+          top: 110%;
+          transform: translateX(100px) rotate(360deg);
+        }
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 60px 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+        margin-bottom: 40px;
+        animation: fadeIn 1s ease-in;
+        backdrop-filter: blur(10px);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: 3.5em;
+        color: #d63384;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .hero p {
+        font-size: 1.3em;
+        color: #c94277;
+        line-height: 1.6;
+      }
+
+      .subtitle {
+        font-style: italic;
+        color: #ff6b9d;
+        margin-top: 15px;
+      }
+
+      .quiz-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+        animation: slideIn 0.8s ease-out;
+        display: none;
+      }
+
+      .quiz-section.active {
+        display: block;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .quiz-section h2 {
+        color: #d63384;
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .question {
+        margin: 30px 0;
+      }
+
+      .question h3 {
+        color: #c94277;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+      }
+
+      .options {
+        display: grid;
+        gap: 15px;
+      }
+
+      .option {
+        background: linear-gradient(135deg, #ffe0f0 0%, #ffeef8 100%);
+        border: 2px solid #ff6b9d;
+        padding: 15px 25px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+      }
+
+      .option:hover {
+        background: linear-gradient(135deg, #ffd6eb 0%, #ffe0f0 100%);
+        transform: translateX(10px);
+        box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+      }
+
+      .option.correct {
+        background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+        border-color: #4ecb71;
+        animation: correctPulse 0.6s ease;
+      }
+
+      .option.wrong {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        border-color: #ff6b9d;
+        animation: shake 0.5s ease;
+      }
+
+      @keyframes correctPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+      }
+
+      .rose-bloom {
+        position: fixed;
+        font-size: 60px;
+        animation: bloom 2s ease-out forwards;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      @keyframes bloom {
+        0% {
+          opacity: 0;
+          transform: scale(0) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5) rotate(180deg);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2) rotate(360deg) translateY(-100px);
+        }
+      }
+
+      .romantic-message {
+        background: linear-gradient(135deg, #ffeef8 0%, #fff5fc 100%);
+        border-left: 5px solid #ff6b9d;
+        padding: 25px;
+        margin: 25px 0;
+        border-radius: 15px;
+        font-style: italic;
+        color: #c94277;
+        display: none;
+        animation: fadeIn 1s ease-in;
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+      }
+
+      .romantic-message.show {
+        display: block;
+      }
+
+      .photo-container {
+        text-align: center;
+        margin: 40px 0;
+        display: none;
+      }
+
+      .photo-container.show {
+        display: block;
+        animation: photoReveal 2s ease-in;
+      }
+
+      @keyframes photoReveal {
+        0% {
+          opacity: 0;
+          transform: scale(0.8) rotateY(90deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotateY(0deg);
+        }
+      }
+
+      .photo-container img {
+        max-width: 100%;
+        max-height: 600px;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+        border: 5px solid #ff6b9d;
+      }
+
+      .final-message {
+        background: linear-gradient(135deg, #ff6b9d 0%, #d63384 100%);
+        color: white;
+        padding: 50px;
+        border-radius: 25px;
+        text-align: center;
+        margin-top: 40px;
+        display: none;
+        animation: fadeIn 1.5s ease-in;
+        box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+      }
+
+      .final-message.show {
+        display: block;
+      }
+
+      .final-message h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .final-message p {
+        font-size: 1.3em;
+        line-height: 1.8;
+      }
+
+      .next-btn {
+        background: linear-gradient(135deg, #ff6b9d 0%, #d63384 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.2em;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-top: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .next-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+      }
+
+      .next-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .music-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 25px;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        z-index: 1000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .music-player:hover {
+        transform: scale(1.1);
+      }
+
+      .music-player span {
+        color: #d63384;
+        font-size: 1.2em;
+      }
+
+      .heart {
+        position: fixed;
+        color: #ff6b9d;
+        font-size: 30px;
+        animation: floatHeart 4s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      @keyframes floatHeart {
+        0% {
+          bottom: -10%;
+          opacity: 1;
+        }
+        100% {
+          bottom: 110%;
+          opacity: 0;
+          transform: translateX(50px) rotate(20deg);
+        }
+      }
+
+      .progress-dots {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .dot {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #ffe0f0;
+        margin: 0 8px;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: #ff6b9d;
+        transform: scale(1.3);
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5em;
+        }
+
+        .quiz-section {
+          padding: 25px;
+        }
+
+        .option {
+          font-size: 1em;
+          padding: 12px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      for (let i = 0; i < 30; i++) {
+        const petal = document.createElement("div");
+        petal.className = "petal";
+        petal.style.left = Math.random() * 100 + "%";
+        petal.style.animationDuration = Math.random() * 3 + 5 + "s";
+        petal.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(petal);
+      }
+    </script>
+
+    <div class="container">
+      <div class="hero">
+        <h1>🌹 Happy Birthday, Amina! 🌹</h1>
+        <p>
+          Today, the world celebrates the most amazing person —
+          <strong>Prupulisat</strong>
+        </p>
+        <p class="subtitle">
+          Get ready for a journey through memories, roses, and surprises... ✨
+        </p>
+      </div>
+
+      <div class="progress-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <!-- Quiz 1 -->
+      <div class="quiz-section active" id="quiz0">
+        <h2>🌸 Chapter 1: The Rose Garden of Memories</h2>
+
+        <div class="question">
+          <h3>What does Amina love more than anything?</h3>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(0, false, this)">
+              Chocolate and sweets
+            </div>
+            <div class="option" onclick="checkAnswer(0, false, this)">
+              Long walks in the rain
+            </div>
+            <div class="option" onclick="checkAnswer(0, true, this)">
+              Beautiful roses 🌹
+            </div>
+            <div class="option" onclick="checkAnswer(0, false, this)">
+              Mystery novels
+            </div>
+          </div>
+        </div>
+
+        <div class="romantic-message" id="msg0">
+          "Like roses that bloom in the morning sun, your presence brings color
+          and beauty to every moment. Each petal reminds me of the countless
+          ways you've made life sweeter." 🌹💕
+        </div>
+
+        <button class="next-btn" id="btn0" onclick="goToQuiz(1)" disabled>
+          Continue the Journey 🌹
+        </button>
+      </div>
+
+      <!-- Quiz 2 -->
+      <div class="quiz-section" id="quiz1">
+        <h2>💖 Chapter 2: The Garden of Kindness</h2>
+
+        <div class="question">
+          <h3>What makes Amina so special?</h3>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(1, false, this)">
+              She's always on time
+            </div>
+            <div class="option" onclick="checkAnswer(1, true, this)">
+              She's incredibly supportive and caring ✨
+            </div>
+            <div class="option" onclick="checkAnswer(1, false, this)">
+              She loves spicy food
+            </div>
+            <div class="option" onclick="checkAnswer(1, false, this)">
+              She collects vintage stamps
+            </div>
+          </div>
+        </div>
+
+        <div class="romantic-message" id="msg1">
+          "In gardens where roses grow, there's always one that stands taller,
+          blooms brighter. That's you — my constant support, my gentle
+          encouragement, the one who believed in me even when I didn't believe
+          in myself." 🌹💫
+        </div>
+
+        <button class="next-btn" id="btn1" onclick="goToQuiz(2)" disabled>
+          Next Chapter 🌹
+        </button>
+      </div>
+
+      <!-- Quiz 3 -->
+      <div class="quiz-section" id="quiz2">
+        <h2>🏁 Chapter 3: The Racing Rose</h2>
+
+        <div class="question">
+          <h3>What competition does Amina enjoy following?</h3>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(2, false, this)">
+              Formula 1 racing
+            </div>
+            <div class="option" onclick="checkAnswer(2, true, this)">
+              M4 Competition 🏎️
+            </div>
+            <div class="option" onclick="checkAnswer(2, false, this)">
+              Chess tournaments
+            </div>
+            <div class="option" onclick="checkAnswer(2, false, this)">
+              Cooking shows
+            </div>
+          </div>
+        </div>
+
+        <div class="romantic-message" id="msg2">
+          "Like the speed and precision of M4 Competition, our bond accelerates
+          through life's tracks. Through every turn, every challenge, you've
+          been there — my co-pilot, my champion. May your dreams race as fast as
+          your favorite cars!" 🏎️🌹✨
+        </div>
+
+        <button class="next-btn" id="btn2" onclick="goToQuiz(3)" disabled>
+          The Final Reveal 🌹
+        </button>
+      </div>
+
+      <!-- Quiz 4 -->
+      <div class="quiz-section" id="quiz3">
+        <h2>🖼️ Chapter 4: A Special Moment</h2>
+
+        <div class="question">
+          <h3>What message comes with this special memory?</h3>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(3, true, this)">
+              A heartfelt apology and endless love ❤️
+            </div>
+            <div class="option" onclick="checkAnswer(3, false, this)">
+              A funny joke
+            </div>
+            <div class="option" onclick="checkAnswer(3, false, this)">
+              A recipe for cake
+            </div>
+            <div class="option" onclick="checkAnswer(3, false, this)">
+              Travel plans
+            </div>
+          </div>
+        </div>
+
+        <div class="romantic-message" id="msg3">
+          "Even the most beautiful rose gardens have thorns. I'm sorry for the
+          times I made you sad, for the moments my words hurt instead of healed.
+          But like roses that bloom after rain, I hope our bond grows stronger,
+          more beautiful, more resilient. You deserve every petal of happiness."
+          🌹💔💕
+        </div>
+
+        <div class="photo-container" id="photoReveal">
+          <h3 style="color: #d63384; margin-bottom: 20px">
+            97 km can't separate what the heart holds close 💕
+          </h3>
+          <img id="specialPhoto" src="" alt="Our special memory" />
+          <p
+            style="
+              margin-top: 20px;
+              color: #c94277;
+              font-style: italic;
+              font-size: 1.2em;
+            "
+          >
+            "Distance is just a number, but love is infinite"
+          </p>
+        </div>
+
+        <button class="next-btn" id="btn3" onclick="showFinal()" disabled>
+          See the Final Surprise 🎁
+        </button>
+      </div>
+
+      <!-- Final Message -->
+      <div class="final-message" id="finalMessage">
+        <h2>🌹 Forever Blooming 🌹</h2>
+        <p>
+          Dearest Amina, Prupulisat, my rose in a world of thorns,<br /><br />
+
+          Thank you for being you — supportive, beautiful, extraordinary.<br />
+          For every smile, every word of encouragement, every moment of
+          patience.<br /><br />
+
+          Like roses need sunlight to bloom, I've grown because of your
+          light.<br />
+          May this year bring you everything your heart desires:<br />
+          Joy as endless as rose petals, success as thrilling as M4
+          competitions,<br />
+          and love as deep as the roots of the oldest rose garden.<br /><br />
+
+          Happy Birthday, beautiful soul. 🌹💕✨<br /><br />
+
+          <strong>The world is better with you in it.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="music-player" onclick="playMusic()">
+      <span>🎵 Pink + Moonlight ✨</span>
+    </div>
+
+    <input type="file" id="photoInput" accept="image/*" style="display: none" />
+
+    <script>
+      // ===== PUT YOUR FILES HERE =====
+      const MUSIC_FILE = "Lana_Del_Rey_-_Young_And_Beautiful_CeeNaija.com_.mp3";
+      const IMAGE_FILE = "IMG_20251027_005536_215.webp"; // ← PUT YOUR IMAGE PATH HERE (e.g., 'photo.jpg' or 'https://i.imgur.com/abc.jpg')
+      // ===============================
+
+      let quizAnswered = [false, false, false, false];
+      let musicPlaying = false;
+      let backgroundMusic = null;
+
+      // Photo upload
+      const photoInput = document.getElementById("photoInput");
+      const specialPhoto = document.getElementById("specialPhoto");
+
+      // Set image if path is provided
+      if (IMAGE_FILE && IMAGE_FILE !== "your-photo.jpg") {
+        specialPhoto.src = IMAGE_FILE;
+      } else {
+        setTimeout(() => {
+          if (confirm("Would you like to upload the special photo now?")) {
+            photoInput.click();
+          }
+        }, 1000);
+      }
+
+      photoInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            specialPhoto.src = event.target.result;
+            alert(
+              "Photo uploaded! 🌹 It will appear when Amina solves the last quiz!"
+            );
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      function checkAnswer(quizNum, isCorrect, element) {
+        if (quizAnswered[quizNum]) return;
+
+        const question = element.parentElement.parentElement;
+        const allOptions = question.querySelectorAll(".option");
+        allOptions.forEach((opt) => (opt.style.pointerEvents = "none"));
+
+        if (isCorrect) {
+          element.classList.add("correct");
+          quizAnswered[quizNum] = true;
+
+          // Bloom roses
+          for (let i = 0; i < 12; i++) {
+            setTimeout(() => createRose(element), i * 100);
+          }
+
+          // Show message
+          setTimeout(() => {
+            document.getElementById("msg" + quizNum).classList.add("show");
+          }, 800);
+
+          // Show photo for last quiz
+          if (quizNum === 3) {
+            setTimeout(() => {
+              document.getElementById("photoReveal").classList.add("show");
+              for (let i = 0; i < 30; i++) {
+                setTimeout(() => createRandomRose(), i * 150);
+              }
+            }, 1500);
+          }
+
+          // Enable button
+          document.getElementById("btn" + quizNum).disabled = false;
+        } else {
+          element.classList.add("wrong");
+          setTimeout(() => {
+            element.classList.remove("wrong");
+            allOptions.forEach((opt) => (opt.style.pointerEvents = "auto"));
+          }, 1000);
+        }
+      }
+
+      function goToQuiz(num) {
+        document
+          .querySelectorAll(".quiz-section")
+          .forEach((q) => q.classList.remove("active"));
+        document.getElementById("quiz" + num).classList.add("active");
+
+        const dots = document.querySelectorAll(".dot");
+        for (let i = 0; i <= num; i++) {
+          dots[i].classList.add("active");
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showFinal() {
+        document.getElementById("quiz3").style.display = "none";
+        document.getElementById("finalMessage").classList.add("show");
+
+        for (let i = 0; i < 25; i++) {
+          setTimeout(() => createHeart(), i * 300);
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function createRose(element) {
+        const rose = document.createElement("div");
+        rose.className = "rose-bloom";
+        rose.textContent = "🌹";
+
+        const rect = element.getBoundingClientRect();
+        rose.style.left = rect.left + rect.width / 2 + "px";
+        rose.style.top = rect.top + rect.height / 2 + "px";
+
+        document.body.appendChild(rose);
+        setTimeout(() => rose.remove(), 2000);
+      }
+
+      function createRandomRose() {
+        const rose = document.createElement("div");
+        rose.className = "rose-bloom";
+        rose.textContent = "🌹";
+        rose.style.left = Math.random() * window.innerWidth + "px";
+        rose.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(rose);
+        setTimeout(() => rose.remove(), 2000);
+      }
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = "💕";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+
+      function playMusic() {
+        if (!backgroundMusic && MUSIC_FILE && MUSIC_FILE !== "your-music.mp3") {
+          backgroundMusic = new Audio(MUSIC_FILE);
+          backgroundMusic.loop = true;
+          backgroundMusic.volume = 0.5;
+        }
+
+        if (backgroundMusic) {
+          if (musicPlaying) {
+            backgroundMusic.pause();
+            musicPlaying = false;
+            document.querySelector(".music-player span").textContent =
+              "🎵 Play Music ✨";
+          } else {
+            backgroundMusic.play();
+            musicPlaying = true;
+            document.querySelector(".music-player span").textContent =
+              "🎵 Pause Music ✨";
+          }
+        } else {
+          alert(
+            '🎵 Add your music file path at the top of the code!\n\nFind: const MUSIC_FILE = "your-music.mp3"\nReplace with your MP3 path! 🌙✨'
+          );
+        }
+      }
+
+      setInterval(() => {
+        if (Math.random() > 0.7) createHeart();
+      }, 2000);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "u" || e.key === "U") {
+          photoInput.click();
+        }
+      });
+    </script>
+  </body>
+</html>
